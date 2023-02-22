@@ -12,14 +12,7 @@ chmod 600 "$SSH_PATH/deploy_key"
 
 GIT_COMMAND="git push dokku@$HOST:$PROJECT"
 
-echo "Detect the project default branch: master or main"
-DEFAULT_BRANCH="$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
-
-if [ -z "$DEFAULT_BRANCH" ]
-then
-    DEFAULT_BRANCH="master"
-fi
-
+DEFAULT_BRANCH="main"
 echo "Default is $DEFAULT_BRANCH"
 
 if [ -n "$BRANCH" ]; then
